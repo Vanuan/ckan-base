@@ -1,8 +1,8 @@
-= CKAN base
+# CKAN base
 
 This is a base CKAN image
 
-== Usage
+## Usage
 
 1. Clone this repo
 2. Copy config folder (ckan.ini file)
@@ -10,6 +10,7 @@ This is a base CKAN image
 4. Copy solr folder (solr schema)
 5. Create docker-compose.yml file:
 
+```
 version: '2'
 services:
   ckan:
@@ -48,10 +49,11 @@ services:
     image: vanuan/ckan-datapusher
   redis:
     image: redis:4-alpine
+```
 
 6. Run docker-compose up (or docker deploy if using swarm mode)
 
-== Customization
+## Customization
 
 To customize it you need to create and install a CKAN extension.
 
