@@ -7,7 +7,7 @@ This is a base CKAN image
 1. Clone this repo
 2. Copy config folder (ckan.ini file)
 3. Create data/pgdata folder (postgres database)
-4. Copy solr folder (solr schema)
+4. Copy solr folder (solr schema and data), chown it to 8983:8983 or use o+w
 5. Create docker-compose.yml file:
 
 ```

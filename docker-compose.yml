@@ -28,19 +28,11 @@ services:
       - ./data/pgdata:/data
   solr:
     image: solr:6.6-alpine
-#    entrypoint:
-#      - docker-entrypoint.sh
-#      - solr-precreate
-#      - ckancore
     ports:
       - 8983:8983
     volumes:
       - ./solr:/opt/solr/server/solr/ckancore/
-#      - ./schema.xml:/opt/solr/server/solr/ckancore/conf/schema.xml
-#      - ./solrconfig.xml:/opt/solr/server/solr/ckancore/conf/solrconfig.xml
-#      - ./schema.xml:/opt/solr/server/solr/mycores/ckancore/conf/schema.xml
   datapusher:
     image: vanuan/ckan-datapusher
-    command: 'sh' 
   redis:
     image: redis:4-alpine
