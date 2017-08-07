@@ -41,8 +41,6 @@ services:
       - ./data/pgdata:/data
   solr:
     image: solr:6.6-alpine
-    ports:
-      - 8983:8983
     volumes:
       - ./solr:/opt/solr/server/solr/ckancore/
   datapusher:
