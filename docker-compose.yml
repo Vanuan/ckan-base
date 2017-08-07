@@ -1,0 +1,46 @@
+version: '2'
+services:
+  ckan:
+    build: .
+    environment:
+      - CKAN_SQLALCHEMY_URL=postgres://postgres:pass@postgres/ckan
+      - CKAN_CONFIG=/etc/ckan
+      - CKAN_SOLR_URL=http://solr:8983/solr/ckancore
+      - CKAN_REDIS_URL=redis://redis:6379/1
+      - CKAN_DATAPUSHER_URL=http://datapusher:8800
+      - CKAN_SITE_URL=http://localhost:5000
+    ports:
+      - 5000:5000
+    volumes:
+      - ./config/ckan.ini:/etc/ckan/ckan.ini
+    depends_on:
+      - postgres
+      - solr
+      - redis
+      - datapusher
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=ckan
+      - PGDATA=/data
+    volumes:
+      - ./data/pgdata:/data
+  solr:
+    image: solr:6.6-alpine
+#    entrypoint:
+#      - docker-entrypoint.sh
+#      - solr-precreate
+#      - ckancore
+    ports:
+      - 8983:8983
+    volumes:
+      - ./solr:/opt/solr/server/solr/ckancore/
+#      - ./schema.xml:/opt/solr/server/solr/ckancore/conf/schema.xml
+#      - ./solrconfig.xml:/opt/solr/server/solr/ckancore/conf/solrconfig.xml
+#      - ./schema.xml:/opt/solr/server/solr/mycores/ckancore/conf/schema.xml
+  datapusher:
+    image: vanuan/ckan-datapusher
+    command: 'sh' 
+  redis:
+    image: redis:4-alpine
