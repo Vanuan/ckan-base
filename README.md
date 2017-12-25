@@ -51,7 +51,9 @@ services:
 
 6. Run docker-compose up (or docker deploy if using swarm mode)
 7. Open localhost:5000
-8. Register a new user (first registered user will get admin privileges)
+8. Register a new user
+9. Add admin privilegs: paster --plugin=ckan sysadmin add USERNAME -c /etc/ckan/ckan.ini
+
 
 ## Customization
 

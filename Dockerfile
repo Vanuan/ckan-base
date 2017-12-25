@@ -1,5 +1,6 @@
 FROM python:2.7-slim
 # FROM python:2.7-alpine - SIGSEGV
+# https://github.com/ckan/ckan/pull/3893
 
 RUN apt-get -q -y update && apt-get -q -y upgrade && \
         DEBIAN_FRONTEND=noninteractive apt-get -q -y install \
