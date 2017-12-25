@@ -41,7 +41,7 @@ ARG CKAN_SITE_URL
 RUN mkdir -p $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH
 
 # Setup CKAN
-RUN git clone https://github.com/ckan/ckan.git --depth 1 -b ckan-2.6.2 $CKAN_VENV/src/ckan/
+RUN git clone https://github.com/ckan/ckan.git --depth 1 -b ckan-2.7.2 $CKAN_VENV/src/ckan/
 
 RUN pip install --upgrade -r $CKAN_VENV/src/ckan/requirements.txt && \
     pip install -e $CKAN_VENV/src/ckan/ && \
