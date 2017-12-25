@@ -1,4 +1,4 @@
-FROM python:2.7-slim
+FROM python:2.7
 # FROM python:2.7-alpine - SIGSEGV
 # https://github.com/ckan/ckan/pull/3893
 
